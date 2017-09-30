@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+	<title>
+	
+	</title>
+</head>
+<body>
+	<p id='p2'>Programacion Web </p>
+	<a id="enlace" href="http://www.google.com">Enlace</a>
+
+<script type="text/javascript">
+	//Crear nodo de tipo Element
+	var parrafos = document.createElement("p");
+
+	//Crear nodo de tipo Texto
+	var contenido = document.createTexNode("Hola Mundo!");
+
+	//Añadir el nodo Text como hijo el nodo Element
+	parrafo.appendChild(contenido);
+
+	//Añadir el nodo Element como hijo de la pagina
+	document.body.appendChild(parrafo);
+
+	var parrafo2 = document.getElementById("p2");
+	parrafo2.parentNode.removeChild( parrafo2 );
+
+	var enlace = document.getElementById("enlace");
+	alert(enlace.href); // muestra http://www...com
+
+
+</script>
+</body>
+</html>
