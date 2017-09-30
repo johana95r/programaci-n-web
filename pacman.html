@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pacman</title>
+	<!link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<canvas id="canvas" width="500" height="350">lamentablemente tienes un navegar no compatible con nuestro juego!, utiliza googleChrome.</canvas>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script >
+  		$(document).ready( function() {
+
+	var canvas = $("#canvas")[0];
+	var canvaswidth = $("#canvas").width();
+	var canvasheight = $("#canvas").height();
+	var contexto = canvas.getContext('2d');
+
+	function setBackground(){
+		
+		contexto.save();				
+		contexto.fillStyle = "white";
+		contexto.fillRect(0, 0, canvaswidth, canvasheight);
+
+		contexto.strokeStyle = "black";
+		contexto.lineWidth = "3";
+		contexto.strokeRect(0, 0,canvaswidth, canvasheight);
+		contexto.restore();
+
+	};
+
+	
+
+	var open = true;
+	var open2 = true;
+	var open3 = true;
+
+    game_loop = setInterval(game, 500);
+
+	function game(){
+		setBackground();
+		pacman();
+	}
+	setBackground();
+	pacman();
+	
+	function deGradosARadianes(grados){
+		return (grados * Math.PI)/180;
+	};
+
+
+	//Creacion de  Pacman 
+	function pacman(){
+
+		//Crear cuerpo
+		contexto.save();
+		contexto.beginPath();
+
+		if(!open){
+
+			contexto.arc(250, 175, 70, deGradosARadianes(45), deGradosARadianes(320));
+			contexto.lineTo(250,175); //--> pintar una linea desde el punto en que se inicia el arco, 
+			contexto.lineTo(250,175);
+			open = true;
+			open2 = false;
+			open3 = false;
+
+		}else if (!open2){
+			contexto.arc(250, 175, 70, deGradosARadianes(25), deGradosARadianes(340));
+			contexto.lineTo(250,175); 
+			open = true;
+			open2 = true;
+			open3 = false;
+
+		}else if(!open3){
+			contexto.arc(250, 175, 70, deGradosARadianes(0), deGradosARadianes(360));
+			contexto.lineTo(250,175); 
+			open = true;
+			open2 = true; 
+			open3 = true;
+		}else{
+			contexto.arc(250, 175, 70, deGradosARadianes(25), deGradosARadianes(340));
+			contexto.lineTo(250,175); 
+			open = false;
+			open2 = false;
+			open3 = false; 
+		};
+		//hast donde queramos
+		contexto.closePath();
+
+		contexto.fillStyle = "yellow";
+		contexto.fill();
+		contexto.lineWidth = "3";
+		contexto.stroke();
+
+		// EL ojo del pacman 
+		contexto.beginPath();
+		contexto.arc(260, 135, 10, deGradosARadianes(0), deGradosARadianes(360) )
+		contexto.fillStyle = "black";
+		contexto.closePath();
+		contexto.fill();
+		contexto.restore();
+
+	};
+
+})
+
+
+  	</script>
+</body>
+</html>

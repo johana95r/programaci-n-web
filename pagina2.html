@@ -1,0 +1,26 @@
+<html>
+pagina2
+<meta charset="utf-8">
+<script language=javascript>
+document.write("<br> Página con JavaScript")
+query = window.location.search.substring(1);
+q = query.split("&");
+vars=[];
+for(i=0;i<q.length;i++){
+    x=q[i].split("=");
+    k=x[0];
+    v=x[1];
+    vars[k]=v;
+	document.write( "<br>" + k + " = " + v );
+}
+
+document.write("<br> shoes" + vars['shoes'] )
+document.write("<br>")
+x = "alex,jose,pedro,manuel,ana,daniela,johana";
+y = x.split(",")
+for( i=0; i < y.length;i++){
+  z = y[i]
+  document.write("<br>" + i + " -> " + z )
+}
+</script>
+</html>
